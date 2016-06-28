@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import userManagement.ChangePwdFrame;
 import userManagement.LoginFrame;
 
 public class MainFrame extends JFrame{
@@ -31,8 +32,6 @@ public class MainFrame extends JFrame{
 	JMenuItem changePwdItem, logoutItem, exitItem;
 	JMenuItem addSubjectItem, listSubjectItem, deleteSubjectItem;
 	JMenuItem enteringDocumentItem, selectDocumentItem, deleteDocumentItem, generateBalanceSheet;
-	
-	JLabel functionLabel;
 	
 	public MainFrame(){
 		this.setTitle("会计凭证管理系统");
@@ -70,14 +69,21 @@ public class MainFrame extends JFrame{
 
 		userManagementMenu.add(changePwdItem);
 		userManagementMenu.add(logoutItem);
+		userManagementMenu.addSeparator();
+		userManagementMenu.add(exitItem);
+		
+		changePwdItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				new ChangePwdFrame();
+				dispose();
+			}
+		});
 		logoutItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				new LoginFrame();
 			}
 		});
-		userManagementMenu.addSeparator();
-		userManagementMenu.add(exitItem);
 		exitItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
